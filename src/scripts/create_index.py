@@ -3,7 +3,7 @@ from pathlib import Path
 from whoosh import index
 from whoosh.fields import Schema, TEXT, ID
 from whoosh.analysis import StemmingAnalyzer
-from src import BASE_DIR
+from src import INDEX_DIR, DOCUMENT_DIR
 
 
 if __name__ == '__main__':
@@ -13,7 +13,6 @@ if __name__ == '__main__':
         doc_id=ID(stored=True, unique=True)
     )
 
-    INDEX_DIR = Path(BASE_DIR / 'index')
     if not index.exists_in(INDEX_DIR):
         print("Creating index...")
         if not INDEX_DIR.exists():
@@ -25,8 +24,6 @@ if __name__ == '__main__':
 
 
     writer = ix.writer()
-    DOCUMENT_DIR = Path(BASE_DIR / 'documents')
-
     for doc_id, doc in enumerate(DOCUMENT_DIR.glob('*.txt')):
         with open(doc, 'r') as f:
             content = f.read()
