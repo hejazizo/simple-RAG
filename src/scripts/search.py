@@ -1,9 +1,9 @@
 from whoosh import index
 from whoosh.qparser import QueryParser
-from whoosh.analysis import StemmingAnalyzer
 from whoosh.qparser import FuzzyTermPlugin, PrefixPlugin
 from whoosh.query import Or, Term
 from src import INDEX_DIR
+
 
 class SearchEngine:
     def __init__(self):

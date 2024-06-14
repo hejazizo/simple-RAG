@@ -163,3 +163,4 @@ cython_debug/
 
 *.ipynb
 /src/index
+/src/documents
